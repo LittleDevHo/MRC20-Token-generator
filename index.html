@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Metadium MRC20 Token Generator</title>
+    <!--CDN for Bootstrap 4-->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <!--CDN for Animation-->
+    <link rel="stylesheet" href="assets/css/animate.min.css">
+    <!--Main Stylesheet-->
+    <link rel="stylesheet" href="styles/main.css">
+    <!--Link for Material Icon-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="assets/images/favicon.png">
+</head>
+<body>
+<div class="container-first">
+    <div class="row wrap-form animated fadeInDown">
+        <div class="col-12 align-self-end hide" id="metamask-locked">
+            <i class="material-icons metamask-span">lock</i>
+            <span class="metamask-text">Metamask Locked</span>
+        </div>
+        <div class="col-12 align-self-end hide" id="metamask-unlocked">
+            <i class="material-icons metamask-span">lock_open</i>
+            <span class="metamask-text">Metamask Login</span>
+        </div>
+        <!--Asset Generator Form-->
+        <div class="col-12 align-self-center">
+            <p class="heading" align="center">Metadium MRC20 Token Generator</p>
+            <!--Content to be Displayed when metamask is not available-->
+            <p class="content" id="metamask-status"></p>
+            <!--When you are connected to mainnet-->
+            <p class="content hide" id="current-address" align="center"></p>
+            <p class="content hide" id="current-network" align="center"></p>
+        </div>
+        <div class="col-12 align-self-center">
+            <form id="asset-form">
+                <div class="form-group">
+                    <input type="text" class="form-control" id="name" placeholder="Name" required><a href="#asset-name"><i
+                        id="info-name" class="material-icons info">info</i></a>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" id="symbol" placeholder="Symbol" required><a
+                        href="#asset-symbol"><i id="info-symbol" class="material-icons info">info</i></a>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" maxlength="2" id="decimals" placeholder="Decimals" required>
+                    <a href="#asset-decimal"><i id="info-decimal" class="material-icons info">info</i></a>
+                    <span class="error-msg" id="decimals-error-msg"></span>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" id="total-supply" placeholder="Total Supply " required>
+                    <a href="#asset-supply"><i id="info-supply" class="material-icons info">info</i></a>
+                    <span class="error-msg" id="total-supply-error-msg"></span>
+                </div>
+                <div class="form-group">
+                    <button align="center" class="submit-button btn btn-primary" id="submit-btn" type="submit">Submit
+                    </button>
+                </div>
+            </form>
+            <!--Asset Generator Form Ends here-->
+            <p id="statusText"></p>
+        </div>
+    </div>
+</div>
+<!--Section for Info Messages for Input-->
+<div class="container-second">
+    <div class="row info-content">
+        <ul class="list-group list-group-flush" id="list-group">
+            <li class="list-group-item animated fadeInUp" id="asset-name"> • <span class="info-heading">MAKER: </span>
+                <p class="info-main">메타디움 앰버서더, Cyber G에 의해 만들어졌습니다. 가스비를 제외하면 무료로 이용가능합니다.</p>
+            </li>
+            <li class="list-group-item animated fadeInUp" id="asset-name"> • <span class="info-heading">NAME : </span>
+                <p class="info-main">메타디움이나 비트코인과 같이, 여러분이 짓고 싶은 이름을 의미합니다.</p>
+            </li>
+            <li class="list-group-item animated fadeInUp" id="asset-symbol"> • <span
+                    class="info-heading">SYMBOL : </span>
+                <p class="info-main">기호는 META 또는 BTC와 같은 토큰의 티커를 나타냅니다(일반적으로 토큰에는 대문자 3개로 구성되어져 있습니다).</p></li>
+            <li class="list-group-item animated fadeInUp" id="asset-decimal"> • <span
+                    class="info-heading">DECIMAL :  </span>
+                <p class="info-main">소수는 토큰이 가질 수 있는 소수 자릿수이며, 이는 토큰을 분할할 수 있는 정도를 결정합니다. 
+                    일반적으로 토큰은 18개의 소수점을 가지며, 이는 1개의 토큰을 수조 개의 조각으로 분할할 수 있게 합니다.(예: 9개의 소수점으로 토큰을 0.000000001개 단위로 나눌 수 있습니다).</p></li>
+            <li class="list-group-item animated fadeInUp" id="asset-supply"> • <span
+                    class="info-heading">SUPPLY : </span>
+                <p class="info-main">총 공급은 사용 가능한 토큰 수량을 나타냅니다. <strong>총 공급량의 숫자는 소숫 자리수와 원하는 공급량을 곱한 결과로 표현됩니다.</strong>
+                    (예: 총 공급이 1000이고 소숫 자리수가 9인 경우 1000 * 100000000(9자리)를 값으로 제공합니다.)</p></li>
+        </ul>
+    </div>
+</div>
+<!--Section for Info Message ends-->
+<div class="container-third">
+    <div class="row copyright-row">
+        <p class="copyright">© CyberG 2022. All Rights Reserved.</p>
+    </div>
+</div>
+
+<!--Libs-->
+<!--CDN for jquery and popper.js and bootstrap-->
+<script src="assets/js/jquery-3.3.1.min.js"></script>
+<script src="assets/js/popper.min.js"></script>
+<script src="assets/js/bootstrap.min.js"></script>
+<script src="assets/js/web3.min.js"></script>
+<!--Core-->
+<script src="scripts/app.js"></script>
+</body>
+</html>
